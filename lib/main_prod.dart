@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'app/core/config/app_config.dart';
+import 'app/core/config/remote_config.dart';
 import 'app/my_app.dart';
 import 'flavors/build_config.dart';
 import 'flavors/env_config.dart';
@@ -21,11 +23,9 @@ Future<void> main() async {
 
   await ScreenUtil.ensureScreenSize();
   EnvConfig prodConfig = EnvConfig(
-    appName: "Basic Boilerplate Prod",
-    baseUrl: "",
+    appName: AppConfig.appName,
+    baseUrl: RemoteConfig.baseURL,
     shouldCollectCrashLog: true,
-    imageViewUrl: '',
-    imageUploadUrl: '',
   );
 
   BuildConfig.instantiate(

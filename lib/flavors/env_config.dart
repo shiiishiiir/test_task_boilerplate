@@ -2,20 +2,19 @@ import 'package:logger/logger.dart';
 
 import '../app/core/config/app_constants.dart';
 
-
 class EnvConfig {
   final String appName;
   final String baseUrl;
-  final String imageViewUrl;
-  final String imageUploadUrl;
+  final String? imageViewUrl;
+  final String? imageUploadUrl;
   final bool shouldCollectCrashLog;
   late final Logger logger;
 
   EnvConfig({
     required this.appName,
     required this.baseUrl,
-    required this.imageViewUrl,
-    required this.imageUploadUrl,
+    this.imageViewUrl,
+    this.imageUploadUrl,
     this.shouldCollectCrashLog = false,
   }) {
     logger = Logger(

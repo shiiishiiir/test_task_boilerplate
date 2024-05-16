@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
+
+var logger = Logger();
 
 abstract class AppConstants {
   static const Transition transition = Transition.rightToLeft;

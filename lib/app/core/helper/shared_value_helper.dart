@@ -32,6 +32,6 @@ final SharedValue<String> userEmail = SharedValue(
   key: "user_email", // disk storage key for shared_preferences
 );
 final SharedValue<String> appLanguage = SharedValue(
-  value: AppConfig.default_language, // initial value
+  value: AppConfig.defaultLanguage, // initial value
   key: "app_language", // disk storage key for shared_preferences
 );
