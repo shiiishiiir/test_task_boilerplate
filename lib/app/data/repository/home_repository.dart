@@ -3,9 +3,19 @@ import '../../services/network_client/api_end_points.dart';
 import '../models/response/home/git_repo_response.dart';
 
 class HomeRepository {
-  Future<GitRepoResponse> getGitRepos({String sortBy = "star", String order = 'desc'}) async {
+  Future<GitRepoResponse> getGitRepos({
+    String sortBy = "star",
+    String order = 'desc',
+    required int currentPage,
+    required int perPage,
+  }) async {
     var response = await ApiClient().get(
-      ApiEndPoints.searchProducts(sortBy: sortBy, order: order),
+      ApiEndPoints.searchProducts(
+        sortBy: sortBy,
+        order: order,
+        currentPage: currentPage,
+        perPage: perPage,
+      ),
       getGitRepos,
       isHeaderRequired: false,
       isLoaderRequired: false,

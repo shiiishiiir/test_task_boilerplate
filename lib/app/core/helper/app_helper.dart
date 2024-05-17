@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../widgets/app_widgets.dart';
 
 class AppHelper {
+  late SharedPreferences prefs;
   BuildContext? context = Get.context;
+
+  saveStringPref(String key, String value) async {
+    prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
+  }
+
+  Future<String?> getStringPref(String key) async {
+    prefs = await SharedPreferences.getInstance();
+    String? mprefs = prefs.getString(key);
+    return mprefs;
+  }
 
   getWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;

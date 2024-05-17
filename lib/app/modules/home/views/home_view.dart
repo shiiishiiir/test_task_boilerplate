@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task_test/app/routes/app_pages.dart';
 
+import '../../../core/widgets/repo_card.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -16,14 +16,15 @@ class HomeView extends GetView<HomeController> {
       ),
       body: Obx(() {
         return ListView.builder(
+          controller: controller.paginateController,
           itemCount: controller.items.length,
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(controller.items[index].name ?? ""),
-              subtitle: Text(controller.items[index].description ?? ""),
-              onTap: () {
-                Get.toNamed(Routes.details, arguments: controller.items[index]);
-              },
+            return InkWell(
+              child: RepoCard(
+                item: controller.items[index],
+              ),
             );
           },
         );
