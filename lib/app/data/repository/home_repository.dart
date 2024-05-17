@@ -1,14 +1,19 @@
 import '../../services/network_client/api_client.dart';
 import '../../services/network_client/api_end_points.dart';
+import '../models/response/home/git_repo_response.dart';
 
-class ProductDetailsRepository {
-  /*Future<ProductDetailsResponse> getProductDetails(int id) async {
+class HomeRepository {
+  Future<GitRepoResponse> getGitRepos({String sortBy = "star", String order = 'desc'}) async {
     var response = await ApiClient().get(
-        ApiEndPoints.getProductStockById(id), getProductDetails,
-        isHeaderRequired: false, isLoaderRequired: false);
-    return productDetailsResponseFromJson(response.toString());
-  }*/
-  /*Future<AddToCartResponse> addToCart(
+      ApiEndPoints.searchProducts(sortBy: sortBy, order: order),
+      getGitRepos,
+      isHeaderRequired: false,
+      isLoaderRequired: false,
+    );
+    return gitRepoResponseFromJson(response.toString());
+  }
+
+/*Future<AddToCartResponse> addToCart(
       AddToCartPostBody addToCartPlayLoad) async {
     var response = await ApiClient(customBaseUrl: AppConfig.authBaseUrl).post(
       ApiEndPoints.addToCart,
@@ -20,8 +25,7 @@ class ProductDetailsRepository {
     return addToCartResponseFromJson(response.toString());
   }*/
 
-
-  /*Future<GetVouchersResponse> getVouchers(
+/*Future<GetVouchersResponse> getVouchers(
       GetVoucherPostBody voucherPlayLoad) async {
     var response = await ApiClient().post(
       ApiEndPoints.getVouchers,

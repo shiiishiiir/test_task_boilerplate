@@ -14,17 +14,20 @@ class HomeView extends GetView<HomeController> {
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: Center(
-        child: InkWell(
-          onTap: () {
-            Get.toNamed(Routes.DETAILS);
+      body: Obx(() {
+        return ListView.builder(
+          itemCount: controller.items.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(controller.items[index].name ?? ""),
+              subtitle: Text(controller.items[index].description ?? ""),
+              onTap: () {
+                Get.toNamed(Routes.details, arguments: controller.items[index]);
+              },
+            );
           },
-          child: const Text(
-            'HomeView is working',
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
