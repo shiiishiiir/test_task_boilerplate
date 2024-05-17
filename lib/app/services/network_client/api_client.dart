@@ -235,6 +235,11 @@ class ApiClient {
         if (!isHeaderRequired && !e.response.toString().contains("<!DOCTYPE html>")) {
           return e.response;
         } else if (e.response?.statusCode == 403 || e.response?.statusCode == 400) {
+          AppWidgets().getSnackBar(
+            title: "Info",
+            message: "Response error code: 403",
+            closeAllSnackbars: false,
+          );
           return e.response;
         } else if (e.response?.statusCode == 401) {
           token.$ = "Bearer ${refreshToken.$}";

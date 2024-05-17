@@ -15,18 +15,21 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Obx(() {
-        return ListView.builder(
-          controller: controller.paginateController,
-          itemCount: controller.items.length,
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-          itemBuilder: (context, index) {
-            return InkWell(
-              child: RepoCard(
-                item: controller.items[index],
-              ),
-            );
-          },
+        return Scrollbar(
+          child: ListView.builder(
+            controller: controller.paginateController.value,
+            itemCount: controller.items.length,
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            itemBuilder: (context, index) {
+              return InkWell(
+                child: RepoCard(
+                  item: controller.items[index],
+                ),
+              );
+            },
+          ),
         );
       }),
     );

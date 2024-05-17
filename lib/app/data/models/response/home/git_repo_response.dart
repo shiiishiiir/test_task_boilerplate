@@ -9,23 +9,31 @@ GitRepoResponse gitRepoResponseFromJson(String str) => GitRepoResponse.fromJson(
 String gitRepoResponseToJson(GitRepoResponse data) => json.encode(data.toJson());
 
 class GitRepoResponse {
+  String? message;
+  String? documentationUrl;
   int? totalCount;
   bool? incompleteResults;
   List<Item>? items;
 
   GitRepoResponse({
+    this.message,
+    this.documentationUrl,
     this.totalCount,
     this.incompleteResults,
     this.items,
   });
 
   factory GitRepoResponse.fromJson(Map<String, dynamic> json) => GitRepoResponse(
+        message: json["message"],
+        documentationUrl: json["documentation_url"],
         totalCount: json["total_count"],
         incompleteResults: json["incomplete_results"],
         items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
+        "message": message,
+        "documentation_url": documentationUrl,
         "total_count": totalCount,
         "incomplete_results": incompleteResults,
         "items": items == null ? [] : List<dynamic>.from(items!.map((x) => x.toJson())),
