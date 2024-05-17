@@ -1,23 +1,13 @@
 import 'package:get/get.dart';
 
-class DetailsController extends GetxController {
-  //TODO: Implement DetailsController
+import '../../../data/models/response/home/git_repo_response.dart';
 
-  final count = 0.obs;
+class DetailsController extends GetxController {
+  final item = Item().obs;
+
   @override
   void onInit() {
+    item.value = Get.arguments;
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
